@@ -76,15 +76,17 @@ function fetchRepos(apiUrl) {
                 // Create two columns
                 const columnContainer = document.createElement('div');
                 columnContainer.classList.add('row');
+                
             
                 // Render repositories in the first column
                 const firstColumnHtml = firstColumn.map(repo => {
+                    const topicsHtml = repo.topics.map(topic => `<span class="badge badge-primary">${topic}</span>`).join(' ');
                     return `
                         <div class="col-md-6">
                             <div class="repository">
                                 <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
                                 <p>${repo.description}</p>
-                                <p>Topics: ${repo.topics.join(', ')}</p>
+                                <p>Topics: ${topicsHtml}</p>
                             </div>
                         </div>
                     `;
@@ -92,12 +94,13 @@ function fetchRepos(apiUrl) {
             
                 // Render repositories in the second column
                 const secondColumnHtml = secondColumn.map(repo => {
+                    const topicsHtml = repo.topics.map(topic => `<span class="badge badge-primary">${topic}</span>`).join(' ');
                     return `
                         <div class="col-md-6">
                             <div class="repository">
                                 <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
                                 <p>${repo.description}</p>
-                                <p>Topics: ${repo.topics.join(', ')}</p>
+                                <p>Topics: ${topicsHtml}</p>
                             </div>
                         </div>
                     `;
