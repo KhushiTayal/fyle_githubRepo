@@ -1,0 +1,22 @@
+/* Your custom styles go here */
+#loader {
+    text-align: center;
+}
+
+.repository {
+    border: 2px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* Add this style to make pagination buttons display horizontally */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.page-link {
+    margin: 0 5px;
+}
