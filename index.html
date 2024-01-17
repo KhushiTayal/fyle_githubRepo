@@ -11,23 +11,23 @@
 
 <body>
     <div class="container mt-5">
-        <!-- User Profile Section -->
         <div id="userProfile" class="mt-5 text-center">
-            <img id="userAvatar" src="" alt="User Avatar" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+            <img id="userAvatar" src="https://cdn.empleyado.com/images/noimage.png" alt="User Avatar" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
             <h2 id="userName"></h2>
             <p id="userInfo"></p>
         </div>
         <h1 class="mb-4">GitHub Repositories</h1>
         <div>
-            <label for="username">GitHub Username:</label>
-            <input type="text" id="username" class="form-control mb-3">
+            <div class="inputFields">
+            <input type="text" id="username" class="form-control mb-3" placeholder="Search Username">
+            <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search repositories">
+            </div>
             <button id="loadRepos" class="btn btn-primary">Load Repositories</button>
         </div>
         <div id="loader" class="mt-3 d-none">
             <img src="loader.gif" alt="Loading...">
         </div>
         
-        <!-- End User Profile Section -->
         <div id="repositories" class="mt-3"></div>
         <div id="pagination" class="mt-3"></div>
     </div>

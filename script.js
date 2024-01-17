@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const loadReposButton = document.getElementById('loadRepos');
+    const searchInput = document.getElementById('searchInput');
+
     loadReposButton.addEventListener('click', function () {
         const username = document.getElementById('username').value.trim();
 
@@ -7,21 +9,42 @@ document.addEventListener('DOMContentLoaded', function () {
             const loader = document.getElementById('loader');
             const repositoriesContainer = document.getElementById('repositories');
             const paginationContainer = document.getElementById('pagination');
-            const userProfileContainer = document.getElementById('userProfile'); // Added this line
-
+            const userProfileContainer = document.getElementById('userProfile');
+            
             loader.classList.remove('d-none');
             repositoriesContainer.innerHTML = '';
             paginationContainer.innerHTML = '';
-            userProfileContainer.innerHTML = ''; // Clear existing user profile
+            userProfileContainer.innerHTML = '';
 
-            const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100`; // Fetch up to 100 repositories per page
+            const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
             const userProfileUrl = `https://api.github.com/users/${username}`;
 
             fetchRepos(apiUrl);
             fetchUserProfile(userProfileUrl);
         }
     });
+
+    // Add event listener for the search input
+    searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.trim().toLowerCase();
+        const repositoriesContainer = document.getElementById('repositories');
+        const allRepositories = repositoriesContainer.querySelectorAll('.repository');
+
+        allRepositories.forEach(repository => {
+            const repoName = repository.querySelector('h4 a').textContent.toLowerCase();
+            const repoDescription = repository.querySelector('p').textContent.toLowerCase();
+
+            if (repoName.includes(searchTerm) || repoDescription.includes(searchTerm)) {
+                repository.style.display = 'block';
+            } else {
+                repository.style.display = 'none';
+            }
+        });
+    });
 });
+
+// ... (remaining code)
+
 
 function fetchRepos(apiUrl) {
     fetch(apiUrl)

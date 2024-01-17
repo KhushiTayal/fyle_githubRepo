@@ -1,4 +1,4 @@
-/* Your custom styles go here */
+
 #loader {
     text-align: center;
 }
@@ -10,7 +10,6 @@
 }
 
 
-/* Add this style to make pagination buttons display horizontally */
 #pagination {
     display: flex;
     justify-content: center;
@@ -19,4 +18,12 @@
 
 .page-link {
     margin: 0 5px;
+}
+
+.inputFields{
+    display: flex;
+}
+
+input{
+    margin: 10px;
 }
